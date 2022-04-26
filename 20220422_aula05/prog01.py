@@ -32,6 +32,7 @@ class Pokemon:
 
         print(output)
 
+
 # 0x000001D10CA4F8B0
 if __name__ == '__main__':
 
