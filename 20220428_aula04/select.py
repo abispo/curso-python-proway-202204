@@ -17,6 +17,8 @@ if __name__ == '__main__':
     fetchmany(n) -> Retorna a quantidade de linhas passada como parâmetro (SELECT * FROM tb_users LIMIT n)
     """
 
+    # fetchall()
+
     sql = "SELECT * FROM tb_users"
     cursor.execute(sql)
 
@@ -28,11 +30,15 @@ if __name__ == '__main__':
     for user in response:
         print(user)
 
+    # fetchone()
+
     sql = "SELECT * FROM tb_users"
     cursor.execute(sql)
 
     response = cursor.fetchone()
     print(response)
+
+    # fetchmany()
 
     sql = "SELECT * FROM tb_users"
     cursor.execute(sql)
