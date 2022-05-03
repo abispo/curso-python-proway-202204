@@ -1,5 +1,5 @@
 from database import Base, engine, session
-from models import User, UserProfile
+from models import User, UserProfile, Post
 
 if __name__ == '__main__':
 
@@ -45,4 +45,25 @@ if __name__ == '__main__':
             )
 
             session.add(user_profile)
+            session.commit()
+
+    response = session.query(Post).all()
+
+    if len(response) == 0:
+
+        posts_list = [
+            {'user_id': 1, 'title': 'A linguagem de programação Python', 'body': 'Python é legal'},
+            {'user_id': 1, 'title': 'A linguagem Java', 'body': 'Java é robusto'},
+            {'user_id': 2, 'title': 'A linguagem Golang', 'body': 'Golang é otimizada para múltiplos cores'}
+        ]
+
+        for post_info in posts_list:
+
+            post = Post(
+                user_id=post_info['user_id'],
+                title=post_info['title'],
+                body=post_info['body']
+            )
+
+            session.add(post)
             session.commit()
