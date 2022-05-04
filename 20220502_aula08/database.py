@@ -32,7 +32,7 @@ connection_string = f"mysql+pymysql://{db_user}:{db_pass}@{db_host}:{db_port}/{d
 # create_engine retorna um objeto engine, que é responsável por estabelecer a conexão com o banco
 # de dados
 # echo=True imprime todos os comandos SQL utilizados no terminal
-engine = create_engine(connection_string, echo=True)
+engine = create_engine(connection_string)
 
 
 # declarative_base retorna a classe base a qual todas as classes do nosso projeto vão herdar.

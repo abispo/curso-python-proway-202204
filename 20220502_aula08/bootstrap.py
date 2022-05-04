@@ -1,5 +1,5 @@
 from database import Base, engine, session
-from models import User, UserProfile, Post
+from models import User, UserProfile, Post, Tag
 
 if __name__ == '__main__':
 
@@ -67,3 +67,14 @@ if __name__ == '__main__':
 
             session.add(post)
             session.commit()
+
+    response = session.query(Tag).all()
+
+    if len(response) == 0:
+        session.add(Tag(name='Python'))
+        session.add(Tag(name='TI'))
+        session.add(Tag(name='Programação'))
+        session.add(Tag(name='2022'))
+        session.add(Tag(name='Proway'))
+
+        session.commit()
