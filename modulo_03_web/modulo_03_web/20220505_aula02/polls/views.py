@@ -10,6 +10,7 @@ from .models import Question
 def index(request):
     # Pegamos a lista das 5 perguntas mais recenter
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    # Question.objects.get(pk=question_id)
 
     # Criamos o dicionário que será passado na renderização do template
     context = {
@@ -20,7 +21,21 @@ def index(request):
 
 
 def detail(request, question_id):
-    return HttpResponse(f"Você está olhando os detalhes da pergunta {question_id}.")
+    # Pegar o question_id passado na url
+    # Usar esse question_id pra fazer a consulta no banco, retornando a questão correspondente
+
+    # Retorne da tabela de questions um valor cuja a chave primária (pk) seja
+    # igual a question_id
+    question = Question.objects.get(pk=question_id)
+
+    # Criar um dicionário que será passado como contexto na função render
+    context = {
+        'question': question
+    }
+
+
+    # No template exibir o question_text dentro de uma tag <h1>
+    return render(request, 'polls/detail.html', context=context)
 
 
 def results(request, question_id):
