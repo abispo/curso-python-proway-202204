@@ -1,0 +1,14 @@
+
+<!--
+Sempre que quisermos utilizar alguma instrução do Python (if, for), temos que usar o padrão
+-->
+<h1>{{ nome_curso }}</h1>
+{% if latest_question_list %}
+<ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+{% else %}
+    <p>Não há perguntas cadastradas</p>
+{% endif %}
+</ul>
