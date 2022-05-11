@@ -1,0 +1,26 @@
+https://docs.djangoproject.com/pt-br/4.0/topics/db/examples/one_to_one/
+
+Criar um app chamado blogs
+	- Dentro desse app, criar a model Post, que terá os seguintes atributos
+         - question
+	 - title (String 200)
+	 - body (TextField)
+
+	- Post vai ter uma relação de 1:1 com Question, ou seja, cada question precisa ter 1 post associado
+	- Gerar as migrations e aplicar as migrations
+
+	- Registrar essa model no admin
+	- Cadastrar alguns posts (2 ou 3)
+
+	- Criar um endpoint chamado posts/
+	 - Será mostrada uma página com a listagem dos posts mostrando o título
+         - Cada post será um link para a página de detalhes do post, onde será mostrado:
+	  - O título do post (title)
+	  - O corpo do post (body)
+	  - Haverá um link para o detalhe da pergunta que está associada
+
+	A linguagem Python
+		Python é muito legal
+
+	Enquete:
+		Qual a versão do Python que você usa
