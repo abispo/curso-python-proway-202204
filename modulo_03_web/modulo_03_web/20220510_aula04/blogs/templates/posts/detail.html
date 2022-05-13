@@ -1,4 +1,4 @@
 <h1>{{ post.title }}</h1>
 <pre>{{ post.body }}</pre>
 
-<a href="{% url 'polls:index' post.question.id %}">{{ post.question }}</a>
+<a href="{% url 'polls:detail' post.question.id %}">{{ post.question }}</a>

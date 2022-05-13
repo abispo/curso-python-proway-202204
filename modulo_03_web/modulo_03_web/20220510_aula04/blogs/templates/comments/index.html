@@ -1,9 +1,10 @@
 <h1>Lista de comentários</h1>
 
 {% if comments_list %}
+
 <ul>
     {% for comment_ in comments_list %}
-        <li>{{ comment_ }}</li>
+        <li><a href="{% url 'blogs:detail_comments' comment_.pk %}">{{ comment_.body }}</a></li>
     {% endfor %}
 </ul>
 

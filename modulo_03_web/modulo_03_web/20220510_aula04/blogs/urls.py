@@ -14,5 +14,6 @@ urlpatterns = [
     path('posts/<int:post_id>/', posts.detail, name='detail'),
 
     #comments
-    path('comments/', comments.index, name='index_comments')
+    path('comments/', comments.index, name='index_comments'),
+    path('comments/<int:comment_id>/', comments.detail, name='detail_comments'),
 ]
