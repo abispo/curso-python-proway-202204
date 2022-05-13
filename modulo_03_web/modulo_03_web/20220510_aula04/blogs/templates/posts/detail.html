@@ -2,3 +2,12 @@
 <pre>{{ post.body }}</pre>
 
 <a href="{% url 'polls:detail' post.question.id %}">{{ post.question }}</a>
+
+<hr>
+<h2>Lista de comentários</h2>
+
+<ul>
+    {% for comment_ in post.comment_set.all %}
+        <li><a href="{% url 'blogs:detail_comments' comment_.id %}">{{ comment_.body }}</a></li>
+    {% endfor %}
+</ul>
