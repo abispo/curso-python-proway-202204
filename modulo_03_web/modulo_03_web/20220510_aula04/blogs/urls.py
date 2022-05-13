@@ -1,7 +1,7 @@
 from django.urls import path
 
 # Importamos o módulo 'views' que está no mesmo diretório de 'urls.py'
-from .views import posts
+from .views import posts, comments
 
 # namespace
 # Dessa maneira conseguimos diferenciar rotas que possuem o mesmo
@@ -9,6 +9,10 @@ from .views import posts
 app_name = 'blogs'
 
 urlpatterns = [
+    # posts
     path('posts/', posts.index, name='index'),
-    path('posts/<int:post_id>/', posts.detail, name='detail')
+    path('posts/<int:post_id>/', posts.detail, name='detail'),
+
+    #comments
+    path('comments/', comments.index, name='index_comments')
 ]

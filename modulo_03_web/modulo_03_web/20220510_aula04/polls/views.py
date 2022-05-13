@@ -11,6 +11,7 @@ from .models import Question, Choice
 # Precisam receber o argumento request
 def index(request):
     # Pegamos a lista das 5 perguntas mais recentes
+    # SELECT * FROM polls_question ORDER BY pub_date DESC
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     # Question.objects.get(pk=question_id)
 

@@ -16,4 +16,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-# python manage.py createsuperuser
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    body = models.CharField(max_length=200)
+    pub_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.body

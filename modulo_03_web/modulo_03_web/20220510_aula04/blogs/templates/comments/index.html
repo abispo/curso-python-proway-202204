@@ -1,0 +1,12 @@
+<h1>Lista de comentários</h1>
+
+{% if comments_list %}
+<ul>
+    {% for comment_ in comments_list %}
+        <li>{{ comment_ }}</li>
+    {% endfor %}
+</ul>
+
+{% else %}
+    <p>Não há comentários publicados</p>
+{% endif %}
