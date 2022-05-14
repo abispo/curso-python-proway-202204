@@ -1,0 +1,13 @@
+<h1>Lista de tags</h1>
+
+{% if tag_list %}
+<ul>
+    {% for tag in tag_list %}
+<!-- 'blogs:detail_tags' tag.id -> http://127.0.0.1:8000/blog/tags/:id       -->
+        <li><a href="{% url 'blogs:detail_tags' tag.pk %}">{{ tag.text }}</a></li>
+    {% endfor %}
+{% else %}
+    <h2>Não há tags cadastradas.</h2>
+{% endif %}
+
+</ul>

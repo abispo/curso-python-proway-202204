@@ -1,0 +1,9 @@
+<h1>Detalhe da tag #{{ tag }}.</h1>
+<hr>
+<h3>Posts relacionados à tag #{{ tag }}</h3>
+
+<ul>
+    {% for post in tag.post.all %}
+        <li><a href="{% url 'blogs:detail' post.pk %}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>

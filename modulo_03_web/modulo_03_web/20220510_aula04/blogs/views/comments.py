@@ -11,7 +11,7 @@ def index(request):
         'comments_list': comments_list
     }
 
-    return render(request, 'comments/index.html', context=context)
+    return render(request, 'comments/tag_list.html', context=context)
 
 
 def detail(request, comment_id):
@@ -23,4 +23,4 @@ def detail(request, comment_id):
     }
 
     # No template exibir o question_text dentro de uma tag <h1>
-    return render(request, 'comments/detail.html', context=context)
+    return render(request, 'comments/tag_detail.html', context=context)

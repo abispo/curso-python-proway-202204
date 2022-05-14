@@ -20,7 +20,7 @@ def index(request):
         'latest_question_list': latest_question_list
     }
 
-    return render(request, 'polls/index.html', context=context)
+    return render(request, 'polls/tag_list.html', context=context)
 
 
 def detail(request, question_id):
@@ -37,7 +37,7 @@ def detail(request, question_id):
     }
 
     # No template exibir o question_text dentro de uma tag <h1>
-    return render(request, 'polls/detail.html', context=context)
+    return render(request, 'polls/tag_detail.html', context=context)
 
 
 def results(request, question_id):
@@ -68,7 +68,7 @@ def vote(request, question_id):
             'question': question,
             'error_message': 'Você deve escolher uma opção!'
         }
-        return render(request, 'polls/detail.html', context=context)
+        return render(request, 'polls/tag_detail.html', context=context)
 
     selected_choice.votes += 1
     selected_choice.save()

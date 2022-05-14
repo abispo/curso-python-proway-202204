@@ -6,8 +6,25 @@
 <hr>
 <h2>Lista de comentários</h2>
 
-<ul>
-    {% for comment_ in post.comment_set.all %}
-        <li><a href="{% url 'blogs:detail_comments' comment_.id %}">{{ comment_.body }}</a></li>
-    {% endfor %}
-</ul>
+{% if post.comment_set.all %}
+    <ul>
+        {% for comment_ in post.comment_set.all %}
+            <li><a href="{% url 'blogs:detail_comments' comment_.id %}">{{ comment_.body }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há comentários para esse post</p>
+{% endif %}
+<hr>
+
+<h2><i>#hashtags</i></h2>
+
+{% if post.tag_set.all %}
+    <ul>
+        {% for tag in post.tag_set.all %}
+            <li><a href="{% url 'blogs:detail_tags' tag.pk %}">#{{ tag.text }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há tags associadas</p>
+{% endif %}

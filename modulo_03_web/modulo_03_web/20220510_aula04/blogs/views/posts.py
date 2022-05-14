@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 
 from ..models import Post
@@ -13,7 +14,7 @@ def index(request):
     }
 
     # Renderiza o template
-    return render(request, 'posts/index.html', context=context)
+    return render(request, 'posts/tag_list.html', context=context)
 
 
 # Entrar no detalhe de um post
@@ -26,10 +27,11 @@ def detail(request, post_id):
     # SELECT * FROM blogs_post WHERE id = :post_id
     post = get_object_or_404(Post, pk=post_id)
 
+
     # Criar um dicionário que será passado como contexto na função render
     context = {
         'post': post
     }
 
     # No template exibir o question_text dentro de uma tag <h1>
-    return render(request, 'posts/detail.html', context=context)
+    return render(request, 'posts/tag_detail.html', context=context)
