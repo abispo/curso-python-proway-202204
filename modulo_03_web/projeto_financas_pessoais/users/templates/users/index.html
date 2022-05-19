@@ -2,10 +2,14 @@
 
 {% block content %}
     {% if not user.is_authenticated %}
-        <h2 class="text-warning text-center bg-secondary">Você não está logado!</h2>
+        <h2 class="text-warning text-center">Você não está logado!</h2>
     {% else %}
-        <h2 class="text-dark text-center bg-primary">Você está logado como {{ user.username }}.</h2>
+        <h2 class="text-dark text-center">Você está logado como {{ user.username }}.</h2>
         <hr>
-        <h2>User list</h2>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <p>Você tem atualmente <strong>{{ total_num_accounts }}</strong> contas cadastradas.</p>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}

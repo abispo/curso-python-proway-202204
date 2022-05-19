@@ -10,12 +10,14 @@ def new(request):
 
         u = User(
             username=post_data.get('txtUsername'),
-            password=post_data.get('txtPassword'),
             email=post_data.get('txtEmail'),
             first_name=post_data.get('txtFirstName'),
             last_name=post_data.get('txtLastName')
         )
 
+        # Criptografa a senha do usuário. Isso é necessário para o usuário
+        # poder fazer o login
+        u.set_password(post_data.get("txtPassword"))
         u.save()
 
         return render(request, 'register/success.html')

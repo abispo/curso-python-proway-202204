@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -33,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'register.apps.RegisterConfig',
+    'accounts.apps.AccountsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,3 +127,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/users/'

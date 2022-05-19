@@ -8,18 +8,21 @@
                 VOCÊ JÁ ESTÁ LOGADO!
             </div>
         {% else %}
+            {% if form.errors %}
+                <p>{{ form.errors }}</p>
+            {% endif %}
             <div class="row mt-4">
                 <div class="col align-self-center text-center">
                     FAÇA SEU LOGIN
                 </div>
             </div>
-            <form action="" method="POST">
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
                 <div class="row my-2">
                     <div class="col">
                         <input
                                 type="text"
-                                name="txtUsername"
+                                name="username"
                                 class="form-control"
                                 placeholder="Informe o seu nome de usuário"
                         >
@@ -28,8 +31,8 @@
                 <div class="row my-2">
                     <div class="col">
                         <input
-                                type="text"
-                                name="txtPassword"
+                                type="password"
+                                name="password"
                                 class="form-control"
                                 placeholder="Informe a sua senha"
                         >
