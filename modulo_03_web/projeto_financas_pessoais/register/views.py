@@ -18,6 +18,6 @@ def new(request):
         # Criptografa a senha do usuário. Isso é necessário para o usuário
         # poder fazer o login
         u.set_password(post_data.get("txtPassword"))
-        u.x()
+        u.save()
 
         return render(request, 'register/success.html')
