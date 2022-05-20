@@ -3,16 +3,22 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from accounts.models import Account
+from accounts.models import Account, Transaction
 
 
 def index(request):
     # Como pegar o user?
     # request.user -> Usuário atualmente logado
     total_num_accounts = request.user.account_set.all().count()
+    # Transaction => Account => User
+    # Dessa maneira, conseguirmos pegar todas as transações onde:
+    # A conta de débito pertence ao usuário que está armazenado em
+    # request.user
+    total_num_transactions = Transaction.objects.filter(debit_account__user=request.user).count()
 
     context = {
-        'total_num_accounts': total_num_accounts
+        'total_num_accounts': total_num_accounts,
+        'total_num_transactions': total_num_transactions
     }
 
     return render(request, 'users/index.html', context=context)
@@ -61,3 +67,7 @@ def list_accounts(request):
     }
 
     return render(request, 'accounts/list.html', context=context)
+
+
+def create_transaction(request):
+    return render(request, 'transactions/create.html')

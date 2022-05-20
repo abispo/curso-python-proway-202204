@@ -10,5 +10,8 @@ urlpatterns = [
 
     # Contas do usuário
     path('me/accounts/create', views.create_account, name='create_account'),
-    path('me/accounts', views.list_accounts, name='list_accounts')
+    path('me/accounts', views.list_accounts, name='list_accounts'),
+
+    # Transações
+    path('me/transactions/create', views.create_transaction, name='create_transaction')
 ]

@@ -13,6 +13,7 @@ class Account(models.Model):
     def __str__(self):
         return self.name
 
+
 class Transaction(models.Model):
     debit_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='debit_account')
     credit_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='credit_account')
