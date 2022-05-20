@@ -10,6 +10,8 @@ class Account(models.Model):
     class Meta:
         db_table = 'tb_accounts'
 
+    def __str__(self):
+        return self.name
 
 class Transaction(models.Model):
     debit_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='debit_account')
@@ -19,3 +21,8 @@ class Transaction(models.Model):
 
     class Meta:
         db_table = 'tb_transactions'
+
+# t = Transaction.objects.get(pk=10)
+# t.debit_account.user
+# user.account_set.transaction_set.all()
+# account_set = Account.

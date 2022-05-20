@@ -1,7 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="row">
-        <div class="col text-center">Lista de contas</div>
+    <div class="row mb-3">
+        <h1 class="col text-center">Lista de contas</h1>
     </div>
+    <hr>
+    <div class="row mb-1">
+        <div class="col text-center border-bottom">
+            Nome da conta
+        </div>
+        <div class="col border-bottom">
+            Saldo
+        </div>
+    </div>
+    {% for user_account in user_accounts %}
+        <div class="row mb-2">
+            <div class="col text-center">
+                {{ user_account.name }}
+            </div>
+            <div class="col">
+               {{ user_account.balance }}
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

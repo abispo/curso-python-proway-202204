@@ -53,4 +53,11 @@ def create_account(request):
 
 def list_accounts(request):
 
-    return render(request, 'accounts/list.html')
+    # Pega todas as contas associadas ao usuário logado
+    user_accounts = request.user.account_set.all()
+
+    context = {
+        'user_accounts': user_accounts
+    }
+
+    return render(request, 'accounts/list.html', context=context)
