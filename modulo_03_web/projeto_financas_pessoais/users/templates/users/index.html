@@ -38,7 +38,7 @@
                 {% if total_num_transactions == 0 %}
                     <a href="{% url 'users:create_transaction' %}">Cadastre a primeira transação</a>
                 {% else %}
-                    <a href="#">Vá para a página de listagem de transações</a>
+                    <a href="{% url 'users:list_transactions' %}">Vá para a página de listagem de transações</a>
                 {% endif %}
             </div>
         </div>

@@ -7,19 +7,21 @@
                 CADASTRE UMA NOVA TRANSAÇÃO
             </div>
         </div>
-        <form action="" method="POST">
+        <form action="{% url 'users:create_transaction' %}" method="POST">
             {% csrf_token %}
             <div class="row my-2">
-                <div class="col">
+                <div class="col d-flex justify-content-center">
                     <select name="menuDebitAccount" id="menuDebitAccount">
-                        <option value="TODO">TODO</option>
+                        {% for user_account in all_user_accounts %}
+                            <option value="{{ user_account.id }}">{{ user_account.name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
-            </div>
-            <div class="row my-2">
-                <div class="col">
+                <div class="col d-flex justify-content-center">
                     <select name="menuCreditAccount" id="menuCreditAccount">
-                        <option value="TODO">TODO</option>
+                        {% for user_account in all_user_accounts %}
+                            <option value="{{ user_account.id }}">{{ user_account.name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -30,6 +32,7 @@
                             name="txtValue"
                             class="form-control"
                             placeholder="Informe o valor da transação"
+                            required
                     >
                 </div>
             </div>

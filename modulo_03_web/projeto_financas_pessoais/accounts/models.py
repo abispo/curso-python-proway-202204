@@ -23,7 +23,3 @@ class Transaction(models.Model):
     class Meta:
         db_table = 'tb_transactions'
 
-# t = Transaction.objects.get(pk=10)
-# t.debit_account.user
-# user.account_set.transaction_set.all()
-# account_set = Account.

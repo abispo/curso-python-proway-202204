@@ -1,4 +1,4 @@
-
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -70,4 +70,46 @@ def list_accounts(request):
 
 
 def create_transaction(request):
-    return render(request, 'transactions/create.html')
+    if request.method == 'GET':
+        all_user_accounts = request.user.account_set.all()
+
+        context = {
+            'all_user_accounts': all_user_accounts
+        }
+
+        return render(request, 'transactions/create.html', context=context)
+    elif request.method == 'POST':
+
+        debit_account_id = request.POST['menuDebitAccount']
+        credit_account_id = request.POST['menuCreditAccount']
+        value = float(request.POST['txtValue'])
+
+        debit_account = Account.objects.get(pk=debit_account_id)
+        credit_account = Account.objects.get(pk=credit_account_id)
+
+        transaction = Transaction(
+            debit_account=debit_account,
+            credit_account=credit_account,
+            value=value
+        )
+
+        transaction.save()
+
+        debit_account.balance = debit_account.balance - value
+        credit_account.balance = credit_account.balance + value
+
+        debit_account.save()
+        credit_account.save()
+
+        return HttpResponseRedirect(reverse('users:index',))
+
+
+def list_transactions(request):
+
+    transactions = Transaction.objects.filter(debit_account__user=request.user).all()
+
+    context = {
+        'transactions': transactions
+    }
+
+    return render(request, 'transactions/index.html', context=context)

@@ -13,5 +13,6 @@ urlpatterns = [
     path('me/accounts', views.list_accounts, name='list_accounts'),
 
     # Transações
-    path('me/transactions/create', views.create_transaction, name='create_transaction')
+    path('me/transactions/create', views.create_transaction, name='create_transaction'),
+    path('me/transactions', views.list_transactions, name='list_transactions')
 ]
